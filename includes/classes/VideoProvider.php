@@ -22,8 +22,11 @@ class VideoProvider{
                                     WHERE season <=1 AND episode <=1
                                     AND id !=:videoId
                                     ORDER BY views DESC LIMIT 1");
+                                    
 
-                                    //season is less than 1 or 0 zero means movie episode should be 0 or 1 ..1 means 1
+
+                                    //this is faltu ki line no use full line..
+                                    //season is less   than 1 or 0 zero means movie episode should be 0 or 1 ..1 means 1
                                     //id != videoId this makes sure we dont select current we are watching
                                     //video with the highest views comes first
 
