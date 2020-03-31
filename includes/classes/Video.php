@@ -38,6 +38,9 @@ class Video{
     public function getSeasonNumber(){
         return $this->sqlData["season"];
     }
+    public function getEntityId(){
+        return $this->sqlData["entityId"];
+    }
 //increment the views no. how many time videos has been watched
     public function incrementViews(){
         $query = $this->con->prepare("UPDATE videos SET views=views+1 WHERE id=:id");

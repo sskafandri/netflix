@@ -2,7 +2,7 @@
 class VideoProvider{
     public static function getUpNext($con,$currentVideo){
         $query = $con->prepare("SELECT * FROM videos
-                                WHERE entityId=:entityId AND videoId !=:videoId
+                                WHERE entityId=:entityId AND id !=:videoId
                                 AND (
                                     (season =:season AND episode >:episode) OR season >:season
                                 ) 
@@ -10,11 +10,10 @@ class VideoProvider{
                                 //selecting the video from video table where video is of same entity and videoid is where we are not watching
                                 //AND (give the vidoes where we are currently on and videos are greater than of the season where we are currently on seaon) season 5 and epison 6 all geater than 6 will be shown
                                 // OR we no videos in the current season give the next season
-        $query->bindData(":entityId",$currentVideo->getEntityId());
-        $query->bindData(":season",$currentVideo->getSeasonNumber());
-        $query->bindData(":entityId",$currentVideo->getEpisodeNumber());
-        $query->bindData(":videoId",$currentVideo->getId());
-
+        $query->bindValue(":entityId",$currentVideo->getEntityId());
+        $query->bindValue(":season",$currentVideo->getSeasonNumber());
+        $query->bindValue(":episode",$currentVideo->getEpisodeNumber());
+        $query->bindValue(":videoId",$currentVideo->getId());
         $query->execute();
 
         if($query->rowCount()==0){
@@ -30,7 +29,7 @@ class VideoProvider{
                                     //id != videoId this makes sure we dont select current we are watching
                                     //video with the highest views comes first
 
-            $query->bindData(":videoId",$currentVideo->getId());
+            $query->bindValue(":videoId",$currentVideo->getId());
             $query->execute();
         }
         $row = $query->fetch(PDO::FETCH_ASSOC);

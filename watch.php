@@ -6,6 +6,8 @@ if(!isset($_GET["id"])){
 }
 $video = new Video($con,$_GET["id"]);
 $video->incrementViews();
+
+$upNextVideo = VideoProvider::getUpNext($con,$video);
 ?>
 <div class="watchContainer">
 
@@ -13,7 +15,15 @@ $video->incrementViews();
         <button onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
         <h1><?php echo $video->getTitle(); ?></h1>
     </div>
+    <div class="videoControls upNext">
 
+        <button><i class="fas fa-redo"></i></button>
+    
+        <div class="upNextContainer">
+            <h2>Up next:</h2>
+            <h3><?php echo $upNextVideo->getTitle(); ?></h3>
+        </div>
+    </div>
     <video controls autoplay>
         <source src='<?php echo $video->getFilePath(); ?>' type="video/mp4">
     </video>
