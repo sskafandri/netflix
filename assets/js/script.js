@@ -92,3 +92,9 @@ function setStartTime(videoId,username){
         })
     })
 }
+
+function restartVideo(){
+    $("video")[0].currentTime = 0;//when we do a square backet [0] like this on jquerry object access is the access to javascript object that it relate to ,,this is way simpler...javascript video object than we set the current time object to 0
+    $("video")[0].play(); 
+    $(".upNext").fadeOut();   //.upNext is class and we dont need to target javascript object 
+}
