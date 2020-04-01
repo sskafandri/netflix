@@ -33,7 +33,7 @@ class VideoProvider{
             $query->execute();
         }
         $row = $query->fetch(PDO::FETCH_ASSOC);
-        return new video($con,$row);
+        return new Video($con,$row); //object of video class created
     }
 
 }

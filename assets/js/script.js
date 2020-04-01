@@ -98,3 +98,6 @@ function restartVideo(){
     $("video")[0].play(); 
     $(".upNext").fadeOut();   //.upNext is class and we dont need to target javascript object 
 }
+function watchVideo(videoId){
+    window.location.href = "watch.php?id=" + videoId;
+}
