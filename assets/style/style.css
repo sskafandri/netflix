@@ -266,3 +266,20 @@ both of them should have in same class */
     background-color:transparent;
     border: none;
 }
+
+.upNext{
+    height: 100%;
+    justify-content: center;
+}
+.upNextContainer button{
+    padding: 0;
+}
+
+.upNextContainer h2,
+.upNextContainer h3{
+    color: #fff;
+}
+
+.watchNav{
+    z-index: 2;
+}
