@@ -77,7 +77,8 @@ function setFinished(videoId,username){
         }
     })
 }
-
+//ajex requiest using jquery ..post because it is post requiest ..we will send data using post method...
+//and the first paramenter is the file we want to requied to scond paramenter the data we want to send..{ } is used to send data in username and userid to ajex php page
 function setStartTime(videoId,username){
     $.post("ajax/getProgress.php",{ videoId: videoId,username: username },function(data){  //file we going to request(path),anomous function it does not have name
         //addDuration.php data that is gone out of this page will goes to this funtion data variale
@@ -100,4 +101,7 @@ function restartVideo(){
 }
 function watchVideo(videoId){
     window.location.href = "watch.php?id=" + videoId;
+}
+function showUpNext(){
+    $(".upNext").fadeIn();
 }
