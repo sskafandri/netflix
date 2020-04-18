@@ -31,28 +31,27 @@ $userLoggedIn = $_SESSION["userLoggedIn"];
 
         <div class="topBar">
 
-        <div class="logoContainer">
-            <a href="index.php">
-                <img src="assets/images/img1.png" alt="logo">
-            </a>
-        </div>
+            <div class="logoContainer">
+                <a href="index.php">
+                    <img src="assets/images/img1.png" alt="logo">
+                </a>
+            </div>
 
-        <ul class="navLinks">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="shows.php">TV Shows</a></li>
-            <li><a href="movies.php">Movies</a></li>
+            <ul class="navLinks">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="shows.php">TV Shows</a></li>
+                <li><a href="movies.php">Movies</a></li>
 
-        </ul>
+            </ul>
 
-        <div class="rightItems">
-            <a href="search.php">
-                <i class="fas fa-search"></i>
-            </a>
-            <a href="profile.php">
-            <i class="fas fa-user"></i>
-
-            </a>
-        </div>
+            <div class="rightItems">
+                <a href="search.php">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="profile.php">
+                <i class="fas fa-user"></i>
+                </a>
+            </div>
 
 
         </div>

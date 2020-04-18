@@ -308,6 +308,14 @@ both of them should have in same class */
     padding: 0 60px;
     height: 70px;
     box-sizing: border-box;
+    min-width: 1050px;
+    transition: background-color 200ms linear; 
+    /* changes the color background color slowely black to transparent */
+}
+/* this will target the topbar when it has scrolled class as well*/
+.topBar.scrolled{ 
+    background-color: #141414;
+    transition: background-color 200ms linear;
 }
 .logoContainer{
     height: 40px;
