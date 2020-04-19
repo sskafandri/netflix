@@ -8,10 +8,20 @@ class PreviewProvider {
         $this->username = $username;
     }
     public function createTVShowPreviewVideo(){
-        $entitiesArray = EntityProvider::getTVShowEntities($this->con,null,1);
+        $entitiesArray = EntityProvider::getMoviesEntities($this->con,null,1);
 
         if(sizeof($entitiesArray) == 0){
             ErrorMessage::show("no TV shows to display");
+        }
+
+         return $this->createPreviewVideo($entitiesArray[0]);
+    }
+
+    public function createMoviesPreviewVideo(){
+        $entitiesArray = EntityProvider::getTVShowEntities($this->con,null,1);
+
+        if(sizeof($entitiesArray) == 0){
+            ErrorMessage::show("no Movies to display");
         }
 
          return $this->createPreviewVideo($entitiesArray[0]);
