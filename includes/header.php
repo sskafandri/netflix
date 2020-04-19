@@ -29,29 +29,11 @@ $userLoggedIn = $_SESSION["userLoggedIn"];
     <body>
         <div class='wrapper'>
 
-        <div class="topBar">
+<?php
 
-            <div class="logoContainer">
-                <a href="index.php">
-                    <img src="assets/images/img1.png" alt="logo">
-                </a>
-            </div>
+if(!isset($hideNav)){ //if we don't want to page have navbar give some value to $hideNav on the top of the php page
+    //navBar.php will not be included 
+    include_once("includes/navBar.php");
+}
 
-            <ul class="navLinks">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="shows.php">TV Shows</a></li>
-                <li><a href="movies.php">Movies</a></li>
-
-            </ul>
-
-            <div class="rightItems">
-                <a href="search.php">
-                    <i class="fas fa-search"></i>
-                </a>
-                <a href="profile.php">
-                <i class="fas fa-user"></i>
-                </a>
-            </div>
-
-
-        </div>
+?>
