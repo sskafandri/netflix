@@ -19,7 +19,16 @@ $(function(){
 
         timer = setTimeout(function(){
             var val = $(".searchInput").val();
-            console.log(val);
+            
+            if(val != ""){
+                $.post("ajax/getSearchResults.php",{ term:val, username: username},function(data){
+                    $(".results").html(data);
+                })
+            }
+            else{
+                $(".results").html("");
+            }
+
         },500);
     })
 })
