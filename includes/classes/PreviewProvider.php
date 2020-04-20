@@ -7,6 +7,17 @@ class PreviewProvider {
         $this->con = $con;
         $this->username = $username;
     }
+
+    public function createCategoryPreviewVideo($categoryId){
+        $entitiesArray = EntityProvider::getEntities($this->con,$categoryId,1);
+
+        if(sizeof($entitiesArray) == 0){
+            ErrorMessage::show("no TV shows to display");
+        }
+
+         return $this->createPreviewVideo($entitiesArray[0]);
+    }
+
     public function createTVShowPreviewVideo(){
         $entitiesArray = EntityProvider::getMoviesEntities($this->con,null,1);
 
