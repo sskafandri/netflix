@@ -10,7 +10,7 @@ class SearchResultsProvider{
         $this->username = $username;
     }
     public function getResults($inputText){
-        
+        $entities = EntityProvider::getSearchEntities($this->con,$inputText);
     }
 }
 
