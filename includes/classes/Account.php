@@ -6,6 +6,12 @@ class Account{
     public function __construct($con){ //contructor of account class
         $this->con = $con;
     } 
+
+    public function updateDetails($fn,$ln,$email,$un){
+        $this->validateFirstName($fn);
+        $this->validateLastName($ln);
+        $this->validateNewEmail($em,$un);
+    }
     public function register($fn,$ln,$un,$em,$em2,$pw,$pw2){
         $this->validateFirstName($fn);
         $this->validateLastName($ln);
@@ -100,7 +106,24 @@ class Account{
             array_push($this->errorArray,Constants::$emailTaken);
         }
     }
-    
+    private function validateNewEmail($em,$un){
+        
+
+        if(!filter_var($em,FILTER_VALIDATE_EMAIL)){ //it will fiter em with validate email filter.. filter_var is bulid in function..check valid email
+            array_push($this->errorArray,Constants::$emailInvalid);
+            return;
+        }
+        $query = $this->con->prepare("SELECT * FROM users WHERE email=:em AND username != :un");   //sequel query..it is used to check wheather user name already exist or not
+        $query->bindValue(":em",$em);
+        $query->bindValue(":un",$un);
+
+
+        $query->execute();
+
+        if($query->rowCount()!=0){
+            array_push($this->errorArray,Constants::$emailTaken);
+        }
+    }
     private function validatePasswords($pw,$pw2){
         if($pw != $pw2){    //check both are same or not
             array_push($this->errorArray,Constants::$passwordsDontMatch);    
