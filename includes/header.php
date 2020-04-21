@@ -1,5 +1,5 @@
 <?php
-require_once("includes/config.php");
+require_once("includes/config.php");// ye include hoge baki line hogi but chalegi nahi bcz unka object nahi ban raha hai us config ka object nahi banane ki need hai aise hi chal jayega bcz vo script hai 
 require_once("includes/classes/PreviewProvider.php");
 require_once("includes/classes/Entity.php");
 require_once("includes/classes/CategoryContainers.php");

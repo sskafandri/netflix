@@ -84,7 +84,7 @@ class EntityProvider {
     }
     public static function getSearchEntities($con,$term){
 
-       $sql = "SELECT * FROM entities WHERE name LIKE CONCAT('%',:term,%) LIMIT 30";
+       $sql = "SELECT * FROM entities WHERE name LIKE CONCAT('%',:term, '%') LIMIT 30";
 
         $query = $con->prepare($sql);
 
