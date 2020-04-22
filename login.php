@@ -9,14 +9,14 @@ $account = new Account($con);
 
     if(isset($_POST["submitButton"])){
        
-        $userName = FormSanitizer::sanitizeFormUsername($_POST["userName"]);
+        $username = FormSanitizer::sanitizeFormUsername($_POST["userName"]);
         $password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
 
     
-        $success = $account->login($userName,$password);
+        $success = $account->login($username,$password);
         
         if($success){
-            $_SESSION["userLoggedIn"] = $userName;  //session establishing
+            $_SESSION["userLoggedIn"] = $username;  //session establishing
             header("Location: index.php");  //goto this page
         }
     }

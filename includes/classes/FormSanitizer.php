@@ -1,7 +1,7 @@
 <?php
 
 class FormSanitizer{
-    public static function sanitizeFormStrnig($inputText){
+    public static function sanitizeFormString($inputText){
         $inputText = strip_tags($inputText);  //to remove html tags
         $inputText = str_replace(" ","",$inputText); //to remove space in first name staring or in the end (or)
         //$inputText = trim($inputText); to remove space in between name or any where

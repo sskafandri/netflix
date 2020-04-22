@@ -7,10 +7,24 @@ class Account{
         $this->con = $con;
     } 
 
-    public function updateDetails($fn,$ln,$email,$un){
+    public function updateDetails($fn,$ln,$em,$un){
         $this->validateFirstName($fn);
         $this->validateLastName($ln);
         $this->validateNewEmail($em,$un);
+
+        if(empty($this->errorArray)){
+            $query = $this->con->prepare("UPDATE users SET firstName=:fn, lastName=:ln, email=:em
+                                        WHERE username=:un");
+        
+        $query->bindValue(":fn",$fn);
+        $query->bindValue(":ln",$ln);
+        $query->bindValue(":em",$em);
+        $query->bindValue(":un",$un);
+        
+        return $query->execute();
+
+        }
+        return false;
     }
     public function register($fn,$ln,$un,$em,$em2,$pw,$pw2){
         $this->validateFirstName($fn);
@@ -76,7 +90,7 @@ class Account{
     private function validateUserName($un){    //ls stand for last name, this function is used for 
     //checking standars that first name should be grater than 2 charter and less than 25 char
         if(strlen($un)< 2 || strlen($un)> 25){
-            array_push($this->errorArray,Constants::$userNameCharacters); //fist name worng ... is pushed to an array errorArray
+            array_push($this->errorArray,Constants::$usernameCharacters); //fist name worng ... is pushed to an array errorArray
             return;
         }
         $query = $this->con->prepare("SELECT * FROM users WHERE username=:un");   //sequel query..it is used to check wheather user name already exist or not
@@ -85,7 +99,7 @@ class Account{
         $query->execute();
 
         if($query->rowCount()!=0){
-            array_push($this->errorArray,Constants::$userNameTaken);
+            array_push($this->errorArray,Constants::$usernameTaken);
         }
     }
     private function validateEmails($em,$em2){

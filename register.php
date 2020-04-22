@@ -9,16 +9,23 @@ require_once("includes/classes/Account.php");
 
     if(isset($_POST["submitButton"])){
 
-        $firstName = FormSanitizer::sanitizeFormStrnig($_POST["firstName"]);  //class name::Static method name .. aise hi call kiya jata hai static method ko
-        $lastName = FormSanitizer::sanitizeFormStrnig($_POST["lastName"]);
-        $userName = FormSanitizer::sanitizeFormUsername($_POST["userName"]);
+        $firstName = FormSanitizer::sanitizeFormString($_POST["firstName"]);  //class name::Static method name .. aise hi call kiya jata hai static method ko
+        $lastName = FormSanitizer::sanitizeFormString($_POST["lastName"]);
+        $username = FormSanitizer::sanitizeFormUsername($_POST["userName"]);
         $email = FormSanitizer::sanitizeFormEmail($_POST["email"]);
         $email2 = FormSanitizer::sanitizeFormEmail($_POST["email2"]);
         $password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
         $password2 = FormSanitizer::sanitizeFormPassword($_POST["password2"]);
 
     
-        $success = $account->register($firstName,$lastName,$userName,$email,$email2,$password,$password2);
+        $success = $account->register($firstName,$lastName,$username,$email,$email2,$password,$password2);
+        echo "console.log('$success')";
+        if($success){
+            $_SESSION["userLoggedIn"] = $username;  //session establishing
+            header("Location:index.php");  //goto this page
+        }
+
+        $success = $account->login($username,$password);
         
         if($success){
             $_SESSION["userLoggedIn"] = $username;  //session establishing
@@ -61,8 +68,8 @@ require_once("includes/classes/Account.php");
                 <?php echo $account->getError(Constants::$lastNameCharacters); ?>   
                 <input type="text" name="lastName" placeholder="last name" value="<?php getInputValue("lastName") ?>" required>
 
-                <?php echo $account->getError(Constants::$userNameCharacters); ?>   
-                <?php echo $account->getError(Constants::$userNameTaken); ?>                     
+                <?php echo $account->getError(Constants::$usernameCharacters); ?>   
+                <?php echo $account->getError(Constants::$usernameTaken); ?>                     
                 <input type="text" name="userName" placeholder="user name" value="<?php getInputValue("userName") ?>" required> 
 
                 <?php echo $account->getError(Constants::$emailDontMatch); ?>
