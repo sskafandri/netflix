@@ -33,13 +33,13 @@ if(isset($_POST["saveDetailsButton"])){
 if(isset($_POST["savePasswordButton"])){
     $account = new Account($con);
 
-    $oldPassword = FormSanitizer::sanitizeFormPassword($_POST["oldPasword"]);
-    $newPassword = FormSanitizer::sanitizeFormPassword($_POST["newPasword"]);
-    $oldPassword2 = FormSanitizer::sanitizeFormPassword($_POST["newPasword2"]);
+    $oldPassword = FormSanitizer::sanitizeFormPassword($_POST["oldPassword"]);
+    $newPassword = FormSanitizer::sanitizeFormPassword($_POST["newPassword"]);
+    $newPassword2 = FormSanitizer::sanitizeFormPassword($_POST["newPassword2"]);
 
     
 
-    if($account->updateDetails($firstName,$lastName,$email,$userLoggedIn)){
+    if($account->updatePassword($oldPassword,$newPassword ,$newPassword2,$userLoggedIn)){
         $passwordMessage = "<div class='alertSuccess'>
         
                                 password updated successfully! 
