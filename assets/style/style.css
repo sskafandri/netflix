@@ -403,3 +403,15 @@ both of them should have in same class */
     width: 100px;
     height: 40px;
 }
+
+.alertSuccess,
+.alertError{
+    margin: 10px 0;
+}
+
+.alertError{
+    color: #dc1928;
+}
+.alertSuccess{
+    color: #2ecc71;
+}

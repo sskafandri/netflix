@@ -154,6 +154,19 @@ class Account{
         {
             return "<span class='errorMessage'>$error</span>";
         }
+        else{
+            $errorMessage = $account->getFirstError();
+
+            $detailsMessage = "<div class='alertError'>
+                                    $errorMessage
+                                </div>";
+        }
+    }
+
+    public function getFirstError(){
+        if(!empty($this->errorArray)){
+            return $this->errorArray[0];
+        }
     }
 }
 

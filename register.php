@@ -19,7 +19,7 @@ require_once("includes/classes/Account.php");
 
     
         $success = $account->register($firstName,$lastName,$username,$email,$email2,$password,$password2);
-        echo "console.log('$success')";
+        
         if($success){
             $_SESSION["userLoggedIn"] = $username;  //session establishing
             header("Location:index.php");  //goto this page
